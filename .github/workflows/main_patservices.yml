@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_29af3850dbdd4e918cde11f6b337e918 }}/patientservice:${{ github.sha }}
-        file: ./Dockerfile
+        file: Patient_Services/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
