@@ -25,17 +25,14 @@ builder.Services.ConfigureSwaggerGen(setup =>
 var config = builder.Configuration.GetConnectionString("PatientDatabase");
 builder.Services.AddDbContext<ProjectDatabaseContext>(options => options.UseSqlServer(config));
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
-{
-    options.AddPolicy(MyAllowSpecificOrigins,
-                          policy =>
-                          {
-                              policy.AllowAnyOrigin()
-                                                  .AllowAnyHeader()
-                                                  .AllowAnyMethod();
-                          });
-});
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        }
+        )
+    );
 
 builder.Services.AddScoped<IPatient, PatientRepo>();
 builder.Services.AddScoped<IPatientLogic, PatientLogic>();
@@ -51,8 +48,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("_myAllowSpecificOrigins");
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
