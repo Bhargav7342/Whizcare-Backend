@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_751a70a12deb45049483981503443986 }}/doctorservice:${{ github.sha }}
-        file: ./Dockerfile
+        file: Availability_Services/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
