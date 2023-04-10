@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_e177d16ddce747b588e9ead21e562781 }}/audit:${{ github.sha }}
-        file: ./Dockerfile
+        file: Audit_Service/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
