@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_616fcaf397b74b15a72d11dcbecd0fa6 }}/allergy:${{ github.sha }}
-        file: ./Dockerfile
+        file: Allergy_Services/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
